@@ -62,7 +62,6 @@ try:
         t = threading.Thread(target=floods)
         t.start()
 except IndexError:
-    print(logo)
     print('\n')
     print('[!] Error, Usage : python3 idk.py <ip> <port> <thread count> [!]')
 except TimeoutError:
