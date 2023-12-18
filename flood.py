@@ -60,6 +60,6 @@ try:
         t.start()
 except IndexError:
     print('\n')
-    print('[!] Error, Usage : python3 idk.py <ip> <port> <thread count> [!]')
+    print('[!] Usage : python3 flood.py <ip> <port> <thread count> [!]')
 except TimeoutError:
     print("TIMEOUT ", end='\r')
