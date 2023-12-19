@@ -1,4 +1,9 @@
-import socket, random, sys, threading
+import socket, random, sys, threading, os
+
+if os.name == 'posix':
+  os.system('clear')
+elif os.name == 'nt':
+  os.system('cls')
 
 logo = """\033[1;35m
                                                      
